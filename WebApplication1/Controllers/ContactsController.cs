@@ -1,28 +1,38 @@
 ﻿using WebApplication1.Models;
 using WebApplication1.Services;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Cors;
 
 
 namespace ContactsApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+
     public class ContactsController : ControllerBase
     {
         private readonly ContactService _contactService;
+        private ContactService @object;
 
         public ContactsController()
         {
             _contactService = new ContactService();
         }
 
+        public ContactsController(ContactService @object)
+        {
+            this.@object = @object;
+        }
+
         [HttpGet]
+        [EnableCors("")]
         public ActionResult<List<Contact>> GetContacts()
         {
             return Ok(_contactService.GetAllContacts());
         }
 
         [HttpGet("{id}")]
+        [EnableCors("")]
         public ActionResult<Contact> GetContact(int id)
         {
             var contact = _contactService.GetContactById(id);
@@ -34,6 +44,7 @@ namespace ContactsApi.Controllers
         }
 
         [HttpPost]
+        [EnableCors("")]
         public ActionResult CreateContact([FromBody] Contact contact)
         {
             if (!ModelState.IsValid)
@@ -45,6 +56,7 @@ namespace ContactsApi.Controllers
         }
 
         [HttpPut("{id}")]
+        [EnableCors("")]
         public ActionResult UpdateContact(int id, [FromBody] Contact contact)
         {
             if (id != contact.Id)
@@ -68,6 +80,7 @@ namespace ContactsApi.Controllers
         }
 
         [HttpDelete("{id}")]
+        [EnableCors("")]
         public ActionResult DeleteContact(int id)
         {
             var contact = _contactService.GetContactById(id);

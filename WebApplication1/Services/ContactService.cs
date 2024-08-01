@@ -67,7 +67,7 @@ namespace WebApplication1.Services
 
         private void WriteContactsToFile(List<Contact> contacts)
         {
-            var json = JsonConvert.SerializeObject(contacts, Formatting.Indented);
+            var json = JsonConvert.SerializeObject(contacts, (Newtonsoft.Json.Formatting)System.Xml.Formatting.Indented);
             File.WriteAllText(_filePath, json);
         }
     }

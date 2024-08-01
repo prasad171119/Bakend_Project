@@ -1,10 +1,12 @@
 ﻿
-using WebApplication1.Controllers;
-using ContactsApi.Models;
+using WebApplication1.Controllers; 
+using WebApplication1.Models;
 using WebApplication1.Services;
 using Moq;
 using System.Collections.Generic;
 using Xunit;
+using ContactsApi.Controllers;
+using Microsoft.AspNetCore.Mvc;
 
 namespace TestProject1
 {

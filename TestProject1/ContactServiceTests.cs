@@ -7,6 +7,9 @@ using System.Collections.Generic;
 using System.IO;
 using Xunit;
 using Newtonsoft.Json;
+using WebApplication1;
+using Microsoft.VisualStudio.Web.CodeGeneration;
+using Microsoft.DotNet.Scaffolding.Shared;
 
 namespace TestProject1
 {
@@ -18,7 +21,7 @@ namespace TestProject1
         public ContactServiceTests()
         {
             _fileSystemMock = new Mock<IFileSystem>();
-            _service = new ContactService(_fileSystemMock.Object);
+           //_service = new ContactService(_fileSystemMock.Object);
         }
 
         [Fact]
